@@ -1,0 +1,373 @@
+{
+    "modelName": "New model",
+    "collections": [
+        {
+            "collectionName": "Person",
+            "type": "object",
+            "properties": [],
+            "definitions": {
+                "type": "definitions",
+                "properties": [],
+                "GUID": "41f9e2e0-801b-11eb-9f53-b9fb370e7c86"
+            },
+            "isActivated": true,
+            "collectionUsers": [],
+            "GUID": "41f59d20-801b-11eb-9f53-b9fb370e7c86",
+            "bucketId": "059698c0-801b-11eb-9f53-b9fb370e7c86"
+        },
+        {
+            "collectionName": "restaurant",
+            "type": "object",
+            "properties": [],
+            "definitions": {
+                "type": "definitions",
+                "properties": [],
+                "GUID": "7a3ca840-801b-11eb-9f53-b9fb370e7c86"
+            },
+            "isActivated": true,
+            "collectionUsers": [],
+            "GUID": "7a381460-801b-11eb-9f53-b9fb370e7c86",
+            "bucketId": "059698c0-801b-11eb-9f53-b9fb370e7c86"
+        },
+        {
+            "collectionName": "Review",
+            "type": "object",
+            "properties": [],
+            "definitions": {
+                "type": "definitions",
+                "properties": [],
+                "GUID": "cbdbe3f0-801b-11eb-9f53-b9fb370e7c86"
+            },
+            "isActivated": true,
+            "collectionUsers": [],
+            "GUID": "cbd7ec50-801b-11eb-9f53-b9fb370e7c86",
+            "bucketId": "059698c0-801b-11eb-9f53-b9fb370e7c86"
+        },
+        {
+            "collectionName": "cusine",
+            "type": "object",
+            "properties": [],
+            "definitions": {
+                "type": "definitions",
+                "properties": [],
+                "GUID": "d6aff460-801b-11eb-9f53-b9fb370e7c86"
+            },
+            "isActivated": true,
+            "collectionUsers": [],
+            "GUID": "d6ab1260-801b-11eb-9f53-b9fb370e7c86",
+            "bucketId": "059698c0-801b-11eb-9f53-b9fb370e7c86"
+        }
+    ],
+    "buckets": [
+        {
+            "name": "Whiteboard\tModel Dining With Friends",
+            "type": "bucket",
+            "collectionIds": [
+                "41f59d20-801b-11eb-9f53-b9fb370e7c86",
+                "7a381460-801b-11eb-9f53-b9fb370e7c86",
+                "cbd7ec50-801b-11eb-9f53-b9fb370e7c86",
+                "d6ab1260-801b-11eb-9f53-b9fb370e7c86"
+            ],
+            "backgroundColor": {
+                "r": 216,
+                "g": 0,
+                "b": 115,
+                "a": 1
+            },
+            "show": true,
+            "isActivated": true,
+            "GUID": "059698c0-801b-11eb-9f53-b9fb370e7c86",
+            "hackoladeMeta": {
+                "namingConvention": "code"
+            },
+            "graphVariables": []
+        }
+    ],
+    "views": [],
+    "relationships": [
+        {
+            "name": "Friends",
+            "relationshipType": "",
+            "parentField": [],
+            "parentCardinality": "1",
+            "childField": [],
+            "childCardinality": "1",
+            "parentCollection": "41f59d20-801b-11eb-9f53-b9fb370e7c86",
+            "childCollection": "41f59d20-801b-11eb-9f53-b9fb370e7c86",
+            "level": "entity",
+            "GUID": "e3222f00-801c-11eb-9f53-b9fb370e7c86",
+            "lineSize": 4,
+            "bucketId": "059698c0-801b-11eb-9f53-b9fb370e7c86",
+            "properties": []
+        },
+        {
+            "name": "Writes",
+            "relationshipType": "",
+            "parentField": [],
+            "parentCardinality": "1",
+            "childField": [],
+            "childCardinality": "1",
+            "parentCollection": "41f59d20-801b-11eb-9f53-b9fb370e7c86",
+            "childCollection": "cbd7ec50-801b-11eb-9f53-b9fb370e7c86",
+            "level": "entity",
+            "GUID": "3d7a1530-801d-11eb-9f53-b9fb370e7c86",
+            "lineSize": 4,
+            "bucketId": "059698c0-801b-11eb-9f53-b9fb370e7c86",
+            "properties": []
+        },
+        {
+            "name": "Rate",
+            "relationshipType": "",
+            "parentField": [],
+            "parentCardinality": "1",
+            "childField": [],
+            "childCardinality": "1",
+            "parentCollection": "41f59d20-801b-11eb-9f53-b9fb370e7c86",
+            "childCollection": "cbd7ec50-801b-11eb-9f53-b9fb370e7c86",
+            "level": "entity",
+            "GUID": "4cd33890-801d-11eb-9f53-b9fb370e7c86",
+            "lineSize": 4,
+            "bucketId": "059698c0-801b-11eb-9f53-b9fb370e7c86",
+            "properties": []
+        },
+        {
+            "name": "Are About",
+            "relationshipType": "",
+            "parentField": [],
+            "parentCardinality": "1",
+            "childField": [],
+            "childCardinality": "1",
+            "parentCollection": "cbd7ec50-801b-11eb-9f53-b9fb370e7c86",
+            "childCollection": "7a381460-801b-11eb-9f53-b9fb370e7c86",
+            "level": "entity",
+            "GUID": "cd16ea10-801d-11eb-9f53-b9fb370e7c86",
+            "lineSize": 2,
+            "bucketId": "059698c0-801b-11eb-9f53-b9fb370e7c86",
+            "properties": []
+        },
+        {
+            "name": "Serve",
+            "relationshipType": "",
+            "parentField": [],
+            "parentCardinality": "1",
+            "childField": [],
+            "childCardinality": "1",
+            "parentCollection": "7a381460-801b-11eb-9f53-b9fb370e7c86",
+            "childCollection": "d6ab1260-801b-11eb-9f53-b9fb370e7c86",
+            "level": "entity",
+            "GUID": "d73e66d0-801d-11eb-9f53-b9fb370e7c86",
+            "lineSize": 2,
+            "bucketId": "059698c0-801b-11eb-9f53-b9fb370e7c86",
+            "properties": []
+        }
+    ],
+    "users": [],
+    "diagramViews": [],
+    "idToNameHashTable": {
+        "059698c0-801b-11eb-9f53-b9fb370e7c86": "Whiteboard\tModel Dining With Friends",
+        "41f59d20-801b-11eb-9f53-b9fb370e7c86": "Person",
+        "7a381460-801b-11eb-9f53-b9fb370e7c86": "restaurant",
+        "cbd7ec50-801b-11eb-9f53-b9fb370e7c86": "Review",
+        "d6ab1260-801b-11eb-9f53-b9fb370e7c86": "cusine",
+        "e3222f00-801c-11eb-9f53-b9fb370e7c86": "Friends",
+        "3d7a1530-801d-11eb-9f53-b9fb370e7c86": "Writes",
+        "4cd33890-801d-11eb-9f53-b9fb370e7c86": "Rate",
+        "cd16ea10-801d-11eb-9f53-b9fb370e7c86": "Are About",
+        "d73e66d0-801d-11eb-9f53-b9fb370e7c86": "Serve"
+    },
+    "definitions": {
+        "type": "definitions",
+        "properties": [],
+        "GUID": "a16bf441-8014-11eb-9f53-b9fb370e7c86"
+    },
+    "externalDefinitions": {
+        "type": "externalDefinitions",
+        "properties": [],
+        "GUID": "a16c1b50-8014-11eb-9f53-b9fb370e7c86"
+    },
+    "sources": [],
+    "decorativeSymbols": [],
+    "dbVendor": "Apache TinkerPop",
+    "appTarget": "TinkerPop",
+    "creationTS": "2021-03-08T13:46:06.084Z",
+    "GUID": "a16bf440-8014-11eb-9f53-b9fb370e7c86",
+    "isLineageEnabled": false,
+    "dbVersion": "3.x",
+    "lastModifTS": "2021-03-08T14:53:07.808Z",
+    "persistenceSchemaVersion": "4",
+    "isCreatedByPlugin": true,
+    "pluginInformation": {
+        "pluginName": "TinkerPop",
+        "pluginVersion": "0.1.6",
+        "pluginEngineVersion": "1.0.0"
+    },
+    "applicationInformation": {
+        "version": "4.3.10"
+    },
+    "settings": {
+        "centralPane": {
+            "dbLevel": {
+                "erd": [
+                    {
+                        "GUID": "41f59d20-801b-11eb-9f53-b9fb370e7c86",
+                        "x": 486,
+                        "y": 103,
+                        "width": 162,
+                        "height": 33,
+                        "color": {
+                            "hex": "#2196F3"
+                        }
+                    },
+                    {
+                        "GUID": "7a381460-801b-11eb-9f53-b9fb370e7c86",
+                        "x": 138,
+                        "y": 105,
+                        "width": 181,
+                        "height": 33,
+                        "color": {
+                            "hex": "#2196F3"
+                        }
+                    },
+                    {
+                        "GUID": "cbd7ec50-801b-11eb-9f53-b9fb370e7c86",
+                        "x": 485.9044247787611,
+                        "y": 304.34867256637165,
+                        "width": 162,
+                        "height": 33,
+                        "color": {
+                            "hex": "#2196F3"
+                        }
+                    },
+                    {
+                        "GUID": "d6ab1260-801b-11eb-9f53-b9fb370e7c86",
+                        "x": 152.2973451327434,
+                        "y": 315.5681415929205,
+                        "width": 158,
+                        "height": 33,
+                        "color": {
+                            "hex": "#2196F3"
+                        }
+                    },
+                    {
+                        "GUID": "e3222f00-801c-11eb-9f53-b9fb370e7c86",
+                        "x": 40,
+                        "y": 40,
+                        "width": 164,
+                        "height": 100,
+                        "color": {
+                            "hex": "#333333"
+                        }
+                    },
+                    {
+                        "GUID": "3d7a1530-801d-11eb-9f53-b9fb370e7c86",
+                        "x": 60,
+                        "y": 60,
+                        "width": 158,
+                        "height": 100,
+                        "color": {
+                            "hex": "#333333"
+                        }
+                    },
+                    {
+                        "GUID": "4cd33890-801d-11eb-9f53-b9fb370e7c86",
+                        "x": 80,
+                        "y": 80,
+                        "width": 148,
+                        "height": 100,
+                        "color": {
+                            "hex": "#333333"
+                        }
+                    },
+                    {
+                        "GUID": "cd16ea10-801d-11eb-9f53-b9fb370e7c86",
+                        "x": 100,
+                        "y": 100,
+                        "width": 179,
+                        "height": 100,
+                        "color": {
+                            "hex": "#333333"
+                        }
+                    },
+                    {
+                        "GUID": "d73e66d0-801d-11eb-9f53-b9fb370e7c86",
+                        "x": 120,
+                        "y": 120,
+                        "width": 153,
+                        "height": 100,
+                        "color": {
+                            "hex": "#333333"
+                        }
+                    }
+                ],
+                "buckets": [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "GUID": "059698c0-801b-11eb-9f53-b9fb370e7c86"
+                    }
+                ],
+                "collapsedNodes": [],
+                "activeRelationship": "",
+                "activeRelationshipFields": {
+                    "childField": [],
+                    "parentField": []
+                },
+                "selectedCollections": [],
+                "displayColorPicker": false,
+                "graphView": {
+                    "erd": [
+                        {
+                            "GUID": "41f59d20-801b-11eb-9f53-b9fb370e7c86",
+                            "size": 180,
+                            "x": 577.0287645705936,
+                            "y": 314.90815664453953
+                        },
+                        {
+                            "GUID": "7a381460-801b-11eb-9f53-b9fb370e7c86",
+                            "size": 180,
+                            "x": 314.4353161397591,
+                            "y": 254.4237623016572
+                        },
+                        {
+                            "GUID": "cbd7ec50-801b-11eb-9f53-b9fb370e7c86",
+                            "size": 180,
+                            "x": 390.1435115205385,
+                            "y": 527.7837564692147
+                        },
+                        {
+                            "GUID": "d6ab1260-801b-11eb-9f53-b9fb370e7c86",
+                            "size": 180,
+                            "x": 95.40505130972062,
+                            "y": 433.96355610294603
+                        }
+                    ],
+                    "buckets": [
+                        {
+                            "x": 55.40505130972062,
+                            "y": 214.4237623016572,
+                            "GUID": "059698c0-801b-11eb-9f53-b9fb370e7c86"
+                        }
+                    ],
+                    "decorativeSymbols": [],
+                    "hideRelationshipName": false,
+                    "showPropertiesBoxes": false,
+                    "nameAlongTheLine": false,
+                    "forceLayout": true,
+                    "defaultLinkLength": 283
+                },
+                "diagramViews": [],
+                "decorativeSymbols": [],
+                "nestedCollectionsLayout": "horizontal",
+                "options": []
+            },
+            "collectionLevel": {},
+            "changed": false
+        },
+        "dtDiagram": {
+            "collapsedNodes": [],
+            "details": true,
+            "hideErdDetails": false,
+            "shouldDistributeCollections": false
+        }
+    }
+}
