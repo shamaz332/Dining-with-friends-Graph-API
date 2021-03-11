@@ -27,6 +27,7 @@ export const FriendsOfMyFriends = async (personID: String) => {
       .values("first_name")
       .out("friends")
       .values("first_name")
+      .valueMap(true)
       .next();
 
     return convertObjectArrIntoParis(FrndOfFriends.value);
@@ -44,9 +45,32 @@ export const UserXwithY = async (personID: String, personTwoId: String) => {
       .until(gprocess.statics.has("Person", "personId",personTwoId))
       .repeat(gprocess.statics.both("friends").simplePath())
       .path()
+      .valueMap(true)
       .next();
 
     return convertObjectArrIntoParis(UserAssociation.value);
+  } catch (err) {
+    console.log(err);
+    return null;
+  }
+};
+
+
+export const LatestReview = async (restaurantId: String) => {
+  const limit = 3
+  const offset =0
+  try {
+    const UserAssociation = await g.V().has('Restaurant','restaurantId',restaurantId).
+    in_('about').
+    order().by("created_date",gprocess.order.desc).
+    range(offset, offset + limit).
+    valueMap('created_date', 'body').with_(gprocess.withOptions.tokens).valueMap(true)
+    .next();
+
+    
+    
+
+    return convertObjectArrIntoParis(UserAssociation.values);
   } catch (err) {
     console.log(err);
     return null;

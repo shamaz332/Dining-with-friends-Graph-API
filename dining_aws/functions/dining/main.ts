@@ -13,7 +13,7 @@ import {
   addRestaurant,
   addFriends,
 } from "./mutations";
-import { myFriends, FriendsOfMyFriends, UserXwithY } from "./queries";
+import { myFriends, FriendsOfMyFriends, UserXwithY, LatestReview } from "./queries";
 const Graph = structure.Graph;
 const DriverRemoteConnection = driver.DriverRemoteConnection;
 declare var process: {
@@ -37,8 +37,8 @@ type AppSyncEvent = {
   arguments: {
     personID: string;
     personTwoId: string;
-    // cusineId: string;
-    // restaurantId: string;
+    cusineId: string;
+    restaurantId: string;
     addPer: Person;
     addRev: Review;
     addCus: Cusine;
@@ -82,8 +82,8 @@ export async function handler(event: AppSyncEvent, context: Context) {
         event.arguments.personID,
         event.arguments.personTwoId
       );
-    case "fiendsoffriends":
-      return await FriendsOfMyFriends(event.arguments.personID);
+    case "latestReview":
+      return await LatestReview(event.arguments. restaurantId);
     case "fiendsoffriends":
       return await FriendsOfMyFriends(event.arguments.personID);
     case "fiendsoffriends":

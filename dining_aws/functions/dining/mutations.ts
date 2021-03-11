@@ -28,6 +28,8 @@ export const addReview = async (review: Review) => {
       .property("rating", review.rating)
       .property("text", review.text)
       .property("restaurantId", review.restaurantId)
+      .property("created_date", review.created_date)
+
       .valueMap(true)
       .next();
 

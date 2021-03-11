@@ -8,6 +8,7 @@ type Review {
   rating:String
   text: String
   restaurantId: String
+  created_date:String
 }
 type Cusine {
   cusineId: String
@@ -30,6 +31,7 @@ input inputReview {
   rating:String
   text: String
   restaurantId: String
+  created_date:String
 }
 input inputCusine {
   cusineId: String
@@ -47,7 +49,7 @@ type Query {
   friends(personID: String): [Person]
   fiendsoffriends(personID: String):[Person]
   userAssociated(personID:String,personIdTwo:String):Boolean
-  highestRatedCusine(cusineId:String):[Restaurant]
+  highestRatedCusine(personID:String):[Restaurant]
   topRestaurant:[Restaurant]
   latestReview(restaurantId:String):[Review]
 
@@ -59,7 +61,7 @@ type Mutation{
   addReview (addRev:inputReview):Review 
   addCusine (addCus:inputCusine):Cusine 
   addRestaurant (addREst:inputRestaurant):Restaurant 
-  addFriends(personId: String,personTwoId: String):Person
+  addFriends(personID: String,personTwoId: String):Person
 
 }
 schema{
