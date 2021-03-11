@@ -1,74 +1,68 @@
 type Person {
-  personId: String!
-  first_name: String!
-  last_name: String!
+  personId: String
+  first_name: String
+  last_name: String
 }
 type Review {
-  reviewId: String!
-  rating:Int!
-  text: String!
-  restaurantId: String!
+  reviewId: String
+  rating:String
+  text: String
+  restaurantId: String
 }
 type Cusine {
-  cusineId: String!
-  name: String!
-  restaurantId: String!
+  cusineId: String
+  name: String
+  restaurantId: String
 }
 type Restaurant {
-  name: String!
-  restaurantId: String!
-  address:String!
+  name: String
+  restaurantId: String
+  address:String
 }
 
 input inputPerson {
-  personId: String!
-  first_name: String!
-  last_name: String!
+  personId: String
+  first_name: String
+  last_name: String
 }
 input inputReview {
-  reviewId: String!
-  text: String!
-  restaurantId: String!
+  reviewId: String
+  rating:String
+  text: String
+  restaurantId: String
 }
 input inputCusine {
-  cusineId: String!
-  name: String!
-  restaurantId: String!
+  cusineId: String
+  name: String
+  restaurantId: String
 }
 input inputRestaurant {
-  name: String!
-  restaurantId: String!
-  distance:String!
+  name: String
+  restaurantId: String
+  address:String
 }
 
 type Query {
-  friends: [Person!]
-  fiendsoffriends:[Person!]
-  userAssociated(assId:String):Boolean
-  highestRatedCusine(cusineList:String):[Restaurant!]
-  topRestaurant:[Restaurant]!
-  latestReview(restaurantId:String):[Review!]
+
+  friends(personID: String): [Person]
+  fiendsoffriends(personID: String):[Person]
+  userAssociated(personID:String,personIdTwo:String):Boolean
+  highestRatedCusine(cusineId:String):[Restaurant]
+  topRestaurant:[Restaurant]
+  latestReview(restaurantId:String):[Review]
 
   }
 
 type Mutation{
 
-   addPerson (addPer:inputPerson):Person! 
-    addReview (addRev:inputReview):Review! 
-
-   addCusine (addCus:inputCusine):Cusine! 
-
-   addRestaurant (addREst:inputRestaurant):Restaurant! 
-
-   addFriends(personId: String):Person!
-
+  addPerson (addPer:inputPerson):Person 
+  addReview (addRev:inputReview):Review 
+  addCusine (addCus:inputCusine):Cusine 
+  addRestaurant (addREst:inputRestaurant):Restaurant 
+  addFriends(personId: String,personTwoId: String):Person
 
 }
-
-
 schema{
-
 query: Query,
-	mutation: Mutation
-
+mutation: Mutation
 }

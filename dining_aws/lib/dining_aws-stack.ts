@@ -55,7 +55,7 @@ export class DiningAwsStack extends cdk.Stack {
     // Creating neptune cluster
     const neptuneCluster = new neptune.CfnDBCluster(this, "MyCluster", {
       dbSubnetGroupName: neptuneSubnet.dbSubnetGroupName,
-      dbClusterIdentifier: "myDbCluster",
+      dbClusterIdentifier: "myNep",
       vpcSecurityGroupIds: [sg1.securityGroupId],
     });
     neptuneCluster.addDependsOn(neptuneSubnet);
@@ -71,8 +71,8 @@ export class DiningAwsStack extends cdk.Stack {
     // add this code after the VPC code
     const handler = new lambda.Function(this, "Lambda", {
       runtime: lambda.Runtime.NODEJS_10_X,
-      code: new lambda.AssetCode("lambdas/lambda1"),
-      handler: "index.handler",
+      code: new lambda.AssetCode("functions/dining"),
+      handler: "main.handler",
       vpc: vpc,
       securityGroups: [sg1],
       environment: {
