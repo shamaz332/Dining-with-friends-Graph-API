@@ -5,6 +5,7 @@ type Person {
 }
 type Review {
   reviewId: String!
+  rating:Int!
   text: String!
   restaurantId: String!
 }
@@ -16,7 +17,7 @@ type Cusine {
 type Restaurant {
   name: String!
   restaurantId: String!
-  distance:String!
+  address:String!
 }
 
 input inputPerson {
@@ -44,10 +45,10 @@ type Query {
   friends: [Person!]
   fiendsoffriends:[Person!]
   userAssociated(assId:String):Boolean
-  highestRatedCusine(cusine:String):[Restaurant!]
+  highestRatedCusine(cusineList:String):[Restaurant!]
   topRestaurant:[Restaurant]!
   latestReview(restaurantId:String):[Review!]
-  recomdByFriends:[Restaurant!]
+
   }
 
 type Mutation{
