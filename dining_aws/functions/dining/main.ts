@@ -6,7 +6,13 @@ import { driver, process as gprocess, structure } from "gremlin";
 import * as async from "async";
 import { convertObjectArrIntoParis } from "./diningMain";
 import { Person, Cusine, Review, Restaurant } from "./types";
-import { addPerson, addReview, addCusine, addRestaurant } from "./mutations";
+import {
+  addPerson,
+  addReview,
+  addCusine,
+  addRestaurant,
+  addFriends,
+} from "./mutations";
 import { myFriends, FriendsOfMyFriends, UserXwithY } from "./queries";
 const Graph = structure.Graph;
 const DriverRemoteConnection = driver.DriverRemoteConnection;
@@ -56,7 +62,11 @@ export async function handler(event: AppSyncEvent, context: Context) {
 
     case "addRestaurant":
       return await addRestaurant(event.arguments.addREst);
-
+    case "addFriends":
+      return await addFriends(
+        event.arguments.personID,
+        event.arguments.personTwoId
+      );
     //====================
     //Here is Queries
     //====================

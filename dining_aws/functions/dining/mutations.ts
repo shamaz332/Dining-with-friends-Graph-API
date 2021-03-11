@@ -1,4 +1,4 @@
-import { Cusine, Person,Restaurant,Review } from "./types";
+import { Cusine, Person, Restaurant, Review } from "./types";
 import { g } from "./main";
 import { convertObjectArrIntoParis } from "./diningMain";
 
@@ -19,7 +19,6 @@ export const addPerson = async (person: Person) => {
   }
 };
 
-
 //Review
 export const addReview = async (review: Review) => {
   try {
@@ -39,9 +38,7 @@ export const addReview = async (review: Review) => {
   }
 };
 
-
 //Cusine
-
 
 export const addCusine = async (addCus: Cusine) => {
   try {
@@ -59,7 +56,6 @@ export const addCusine = async (addCus: Cusine) => {
     return null;
   }
 };
-
 
 //addRestaurant
 export const addRestaurant = async (addRes: Restaurant) => {
@@ -80,20 +76,20 @@ export const addRestaurant = async (addRes: Restaurant) => {
 };
 
 //addFriends
-export const addFriends = async (addRes: Restaurant) => {
+export const addFriends = async (personID: String, personTwoId: String) => {
   try {
-    const addsPerson = await g
-      .addV("Person")
-      .property("personId", person.personId)
-      .property("first_name", person.first_name)
-      .property("last_name", person.last_name)
+    const p1 = g.V().has("Person", "personId", personID);
+    const p2 = g.V().has("Person", "personId", personTwoId);
+    const followP = await g
+      .addE("friends")
+      .from_(p1)
+      .to(p2)
       .valueMap(true)
       .next();
 
-    return convertObjectArrIntoParis(addsPerson.value);
+    return convertObjectArrIntoParis(followP.value);
   } catch (err) {
     console.log(err);
     return null;
   }
 };
-
