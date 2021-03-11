@@ -90,23 +90,50 @@ export class DiningAwsStack extends cdk.Stack {
 
     lambdaDs.createResolver({
       typeName: "Query",
-      fieldName: "listNotes",
+      fieldName: "friends",
     });
 
     lambdaDs.createResolver({
-      typeName: "Mutation",
-      fieldName: "createNote",
+      typeName: "Query",
+      fieldName: "fiendsoffriends",
     });
-
+    lambdaDs.createResolver({
+      typeName: "Query",
+      fieldName: "userAssociated",
+    });
+    lambdaDs.createResolver({
+      typeName: "Query",
+      fieldName: "highestRatedCusine",
+    });
+    lambdaDs.createResolver({
+      typeName: "Query",
+      fieldName: "topRestaurant",
+    });
+    lambdaDs.createResolver({
+      typeName: "Query",
+      fieldName: "latestReview",
+    });
     lambdaDs.createResolver({
       typeName: "Mutation",
-      fieldName: "deleteNote",
+      fieldName: "addPerson",
     });
-
     lambdaDs.createResolver({
       typeName: "Mutation",
-      fieldName: "updateNote",
+      fieldName: "addReview",
     });
+    lambdaDs.createResolver({
+      typeName: "Mutation",
+      fieldName: "addCusine",
+    });
+    lambdaDs.createResolver({
+      typeName: "Mutation",
+      fieldName: "addRestaurant",
+    });
+    lambdaDs.createResolver({
+      typeName: "Mutation",
+      fieldName: "addFriends",
+    });
+
     //https://github.com/aws-samples/aws-dbs-refarch-graph/tree/master/src/accessing-from-aws-lambda
     //We will review this link and update our code latter to put the lambda outside the VPC
 

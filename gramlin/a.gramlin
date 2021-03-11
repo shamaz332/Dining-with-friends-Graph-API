@@ -1,0 +1,89 @@
+1....
+g.V().has('person','first_name',"Ted").out('friends').values('first_name')
+
+2....
+
+g.V().has('person','first_name',"Ted").out('friends').out('friends).values('first_name')
+
+3....
+
+g.V().has('person', 'first_name', 'Ted').
+ until(has('person', 'first_name', 'Denise')).
+ repeat(
+ both('friends').simplePath()
+ ).path().next()
+
+4...
+g.V().has('person','person_id',pid).
+ out('lives').
+ in('within').
+ where(out('serves').has('name',
+ within(cuisine_list))).
+ where(inE('about')).
+ group().
+ by(identity()).
+ by(__.in('about').values('rating').mean()).
+ unfold().
+ order().
+ by(values, desc).
+ limit(1).
+ project('name', 'address',
+'rating_average', 'cuisine').
+ by(select(keys).values('name')).
+ by(select(keys).values('address'
+ by(select(values)).
+ by(select(keys).out('serves').values('name')) 
+
+5....
+
+g.V().has('person','person_id',pid).
+ out('lives').
+ in('within').
+ where(__.inE('about')).
+ group().
+ by(identity()).
+ by(__.in('about').values('rating').mean()).
+ unfold().
+ order().
+ by(values, desc).
+ limit(10).
+ unfold().
+ project('name', 'address', 'rating_average').
+ by(select(keys).values('name')).
+ by(select(keys).values('address')).
+ by(select(values))
+
+6>newst reiews
+
+g.V().has('restaurant','restaurant_id',rid).
+ in('about').
+ order().by("created_date",desc).
+ range(offset, offset + limit).
+ valueMap('created_date', 'body').with(WithOptions.tokens).toList()
+ 
+ 
+
+
+
+
+
+
+
+
+
+ const cuisine = "Pakora";
+    const distanceOffset = 30;
+    const query = this.g
+      .V()
+      .has("cuisine", "name", cuisine)
+      .inE()
+      .outV()
+      .where(__.values("distance").is(gremlin.process.P.lte(distanceOffset)))
+      .order()
+      .by(
+        __.inE().hasLabel("about").otherV().inE().hasLabel("likes").count(),
+        gremlin.process.order.desc
+      )
+      .limit(1)
+      .valueMap()
+      .next();
