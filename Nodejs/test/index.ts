@@ -21,8 +21,6 @@ class Operations {
   }
 
   async addPerson() {
-    const awsRequestId = uuid.v4();
-
     const sha = this.g
     .addV("Person")
     .property("personId", "sja,az")

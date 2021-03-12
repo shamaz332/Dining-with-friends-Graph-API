@@ -134,6 +134,10 @@ export class DiningAwsStack extends cdk.Stack {
       fieldName: "addFriends",
     });
 
+
+
+    
+
     //https://github.com/aws-samples/aws-dbs-refarch-graph/tree/master/src/accessing-from-aws-lambda
     //We will review this link and update our code latter to put the lambda outside the VPC
 

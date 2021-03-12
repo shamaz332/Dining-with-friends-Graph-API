@@ -11,7 +11,7 @@ export const addPerson = async (person: Person) => {
       .property("last_name", person.last_name)
       .valueMap(true)
       .next();
-
+    console.log(addsPerson.value)
     return convertObjectArrIntoParis(addsPerson.value);
   } catch (err) {
     console.log(err);
@@ -27,18 +27,21 @@ export const addReview = async (review: Review) => {
       .property("reviewId", review.reviewId)
       .property("rating", review.rating)
       .property("text", review.text)
-      .property("restaurantId", review.restaurantId)
       .property("created_date", review.created_date)
-
-      .valueMap(true)
+      .addE("isAbout").
+       to(g.V().has("Restaurant","restaurantId",review.restaurantId)).valueMap(true)
+      .addE("writes")
+      .from_(g.V().has("Person","personId",review.personId))
+      .to(g.V().has("Review","reviewId",review.reviewId))
       .next();
+      console.log(addsRev.value)
+          return convertObjectArrIntoParis(addsRev.value);
+        } catch (err) {
+          console.log(err);
+          return null;
+        }
+      };
 
-    return convertObjectArrIntoParis(addsRev.value);
-  } catch (err) {
-    console.log(err);
-    return null;
-  }
-};
 
 //Cusine
 
@@ -49,9 +52,12 @@ export const addCusine = async (addCus: Cusine) => {
       .property("cusineId", addCus.cusineId)
       .property("name", addCus.name)
       .property("restaurantId", addCus.restaurantId)
+      .addE("serve")
+      .from_(g.V().has("Restaurant","restaurantId",addCus.restaurantId))
+      .to(g.V().has("Cusine","cusineId",addCus.cusineId))
       .valueMap(true)
       .next();
-
+      console.log(addsCusine.value)
     return convertObjectArrIntoParis(addsCusine.value);
   } catch (err) {
     console.log(err);
@@ -69,7 +75,7 @@ export const addRestaurant = async (addRes: Restaurant) => {
       .property("distance", addRes.address)
       .valueMap(true)
       .next();
-
+      console.log(addsRestaurant.value)
     return convertObjectArrIntoParis(addsRestaurant.value);
   } catch (err) {
     console.log(err);
@@ -80,15 +86,14 @@ export const addRestaurant = async (addRes: Restaurant) => {
 //addFriends
 export const addFriends = async (personID: String, personTwoId: String) => {
   try {
-    const p1 = g.V().has("Person", "personId", personID);
-    const p2 = g.V().has("Person", "personId", personTwoId);
+
     const followP = await g
       .addE("friends")
-      .from_(p1)
-      .to(p2)
+      .from_(g.V().has("Person", "personId", personID))
+      .to(g.V().has("Person", "personId", personTwoId))
       .valueMap(true)
       .next();
-
+      console.log(followP.value)
     return convertObjectArrIntoParis(followP.value);
   } catch (err) {
     console.log(err);

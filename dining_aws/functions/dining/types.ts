@@ -9,6 +9,7 @@ type Person = {
     text: String;
     restaurantId: String;
     created_date: String;
+    personId: String
   }
   type Cusine ={
     cusineId: String;
@@ -20,6 +21,9 @@ type Person = {
     restaurantId: String;
     address:String;
   }
-  
-  export { Person,Review,Cusine,Restaurant}
+  type CusineInRestaurant={
+    cusineId: String;
+    restaurantId: String;
+    }
+  export { Person,Review,Cusine,Restaurant,CusineInRestaurant}
   

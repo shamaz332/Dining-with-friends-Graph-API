@@ -5,7 +5,13 @@ import { Context } from "aws-lambda";
 import { driver, process as gprocess, structure } from "gremlin";
 import * as async from "async";
 import { convertObjectArrIntoParis } from "./diningMain";
-import { Person, Cusine, Review, Restaurant } from "./types";
+import {
+  Person,
+  Cusine,
+  Review,
+  Restaurant,
+  CusineInRestaurant,
+} from "./types";
 import {
   addPerson,
   addReview,
@@ -13,7 +19,12 @@ import {
   addRestaurant,
   addFriends,
 } from "./mutations";
-import { myFriends, FriendsOfMyFriends, UserXwithY, LatestReview } from "./queries";
+import {
+  myFriends,
+  FriendsOfMyFriends,
+  UserXwithY,
+  LatestReview,
+} from "./queries";
 const Graph = structure.Graph;
 const DriverRemoteConnection = driver.DriverRemoteConnection;
 declare var process: {
@@ -43,6 +54,7 @@ type AppSyncEvent = {
     addRev: Review;
     addCus: Cusine;
     addREst: Restaurant;
+    addServCusine: CusineInRestaurant;
   };
 };
 
@@ -67,6 +79,7 @@ export async function handler(event: AppSyncEvent, context: Context) {
         event.arguments.personID,
         event.arguments.personTwoId
       );
+
     //====================
     //Here is Queries
     //====================
@@ -82,12 +95,9 @@ export async function handler(event: AppSyncEvent, context: Context) {
         event.arguments.personID,
         event.arguments.personTwoId
       );
-    case "latestReview":
-      return await LatestReview(event.arguments. restaurantId);
-    case "fiendsoffriends":
-      return await FriendsOfMyFriends(event.arguments.personID);
-    case "fiendsoffriends":
-      return await FriendsOfMyFriends(event.arguments.personID);
+    case "topRestaurant":
+      return await LatestReview(event.arguments.restaurantId);
+
     default:
       return null;
   }

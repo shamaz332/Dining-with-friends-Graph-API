@@ -32,6 +32,7 @@ input inputReview {
   text: String
   restaurantId: String
   created_date:String
+  personId: String
 }
 input inputCusine {
   cusineId: String
@@ -44,6 +45,15 @@ input inputRestaurant {
   address:String
 }
 
+input cusineInRestaurant{
+cusineId: String
+restaurantId: String
+}
+
+input City {
+name: String
+}
+
 type Query {
 
   friends(personID: String): [Person]
@@ -52,6 +62,7 @@ type Query {
   highestRatedCusine(personID:String):[Restaurant]
   topRestaurant:[Restaurant]
   latestReview(restaurantId:String):[Review]
+
 
   }
 
@@ -62,6 +73,10 @@ type Mutation{
   addCusine (addCus:inputCusine):Cusine 
   addRestaurant (addREst:inputRestaurant):Restaurant 
   addFriends(personID: String,personTwoId: String):Person
+
+  
+  personInCity(pCity:City): String
+  restaurntInCity(rCity:City): String
 
 }
 schema{
