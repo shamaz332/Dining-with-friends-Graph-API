@@ -11,7 +11,7 @@ import {
   Review,
   Restaurant,
   CusineInRestaurant,
-  City
+  City,
 } from "./types";
 import {
   addPerson,
@@ -20,7 +20,6 @@ import {
   addRestaurant,
   addFriends,
   addCity,
-  
 } from "./mutations";
 import {
   myFriends,
@@ -39,15 +38,13 @@ declare var process: {
 
 const database_url = "wss://" + process.env.NEPTUNE_ENDPOINT + ":8182/gremlin";
 const graph = new Graph();
-export const g = graph
-  .traversal()
-  .withRemote(new DriverRemoteConnection(database_url, {
-
+export const g = graph.traversal().withRemote(
+  new DriverRemoteConnection(database_url, {
     mimeType: "application/vnd.gremlin-v2.0+json",
     pingEnabled: false,
     headers: {},
-
-  }));
+  })
+);
 
 //events
 
@@ -65,7 +62,7 @@ type AppSyncEvent = {
     addCus: Cusine;
     addREst: Restaurant;
     addServCusine: CusineInRestaurant;
-    addC:City
+    addC: City;
   };
 };
 
@@ -90,11 +87,8 @@ export async function handler(event: AppSyncEvent, context: Context) {
         event.arguments.personID,
         event.arguments.personTwoId
       );
-      case "addCity":
-        return await addCity(
-          event.arguments.addC,
-
-        );
+    case "addCity":
+      return await addCity(event.arguments.addC);
 
     //====================
     //Here is Queries
@@ -111,10 +105,15 @@ export async function handler(event: AppSyncEvent, context: Context) {
         event.arguments.personID,
         event.arguments.personTwoId
       );
+    case "specificCusineHighestRate":
+      return await LatestReview(event.arguments.personID,event.arguments.cusineId);
+    case "highestRatedCusine":
+      return await MyFriendRecomd(event.arguments.personID);
     case "topRestaurant":
-      return await LatestReview(event.arguments.restaurantId);
-      case "frindsRecommend":
-        return await MyFriendRecomd(event.arguments.personID);
+      return await MyFriendRecomd(event.arguments.personID);
+    case "latestReview":
+      return await MyFriendRecomd(event.arguments.restaurantId);
+
     default:
       return null;
   }

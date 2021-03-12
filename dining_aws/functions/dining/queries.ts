@@ -15,7 +15,11 @@ export const myFriends = async (personID: String) => {
       .valueMap(true)
       .next();
 
-    return convertObjectArrIntoParis(myAllFriends.value);
+    const a = myAllFriends.value.map((obj: any) => {
+      return convertObjectArrIntoParis(obj);
+    });
+
+    return a;
   } catch (err) {
     console.log(err);
     return null;
@@ -168,6 +172,31 @@ export const MyFriendRecomd = async (personID: String) => {
   }
 };
 
+
+
+
+export const pastXDays = async (personID: String) => {
+  try {
+
+    const day = Date.now()
+
+    const frndRecomnd = await g
+      .V()
+      .has("Person")
+      .properties("personId", personID)
+      .out("friends")
+      .out("writes")
+      .values("created_date")
+      .is(gprocess.P.within( day , day - 864000000 ))
+      .valueMap(true)
+      .next();
+
+    return convertObjectArrIntoParis(frndRecomnd.value);
+  } catch (err) {
+    console.log(err);
+    return null;
+  }
+};
 // export const MyFriendRecomdPastTenDays = async (personID: String) => {
 //   try {
 //     const day = new Date().getDate();

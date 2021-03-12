@@ -54,7 +54,6 @@ type City{
 name: String
 }
 input city{
-
 name: String
 }
 
@@ -62,13 +61,10 @@ type Query {
   friends(personID: String): Person
   fiendsoffriends(personID: String): Person
   userAssociated(personID: String, personIdTwo: String): Boolean
-
   specificCusineHighestRate(personID: String,cusineID: String):Cusine
-
-
   highestRatedCusine(personID: String): [Restaurant]
-  topRestaurant: [Restaurant]
   latestReview(restaurantId: String): [Review]
+  topRestaurant: [Restaurant]
   frindsRecommend(personID: String): [Restaurant]
 }
 
