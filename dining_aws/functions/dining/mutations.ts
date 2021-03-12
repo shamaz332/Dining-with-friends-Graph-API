@@ -1,4 +1,4 @@
-import { Cusine, Person, Restaurant, Review } from "./types";
+import { City, Cusine, Person, Restaurant, Review } from "./types";
 import { g } from "./main";
 import { convertObjectArrIntoParis } from "./diningMain";
 
@@ -9,9 +9,13 @@ export const addPerson = async (person: Person) => {
       .property("personId", person.personId)
       .property("first_name", person.first_name)
       .property("last_name", person.last_name)
+      .addE("lives")
+      .from_(g.V().has("Person", "personId", person.personId))
+      .to(g.V().has("City", "name", person.city))
       .valueMap(true)
       .next();
-    console.log(addsPerson.value)
+
+    console.log(addsPerson.value);
     return convertObjectArrIntoParis(addsPerson.value);
   } catch (err) {
     console.log(err);
@@ -19,6 +23,21 @@ export const addPerson = async (person: Person) => {
   }
 };
 
+export const addCity = async (city: City) => {
+  try {
+    const addsPerson = await g
+      .addV("City")
+      .property("name", city.name)
+      .valueMap(true)
+      .next();
+
+    console.log(addsPerson.value);
+    return convertObjectArrIntoParis(addsPerson.value);
+  } catch (err) {
+    console.log(err);
+    return null;
+  }
+};
 //Review
 export const addReview = async (review: Review) => {
   try {
@@ -28,20 +47,20 @@ export const addReview = async (review: Review) => {
       .property("rating", review.rating)
       .property("text", review.text)
       .property("created_date", review.created_date)
-      .addE("isAbout").
-       to(g.V().has("Restaurant","restaurantId",review.restaurantId)).valueMap(true)
+      .addE("isAbout")
+      .to(g.V().has("Restaurant", "restaurantId", review.restaurantId))
+      .valueMap(true)
       .addE("writes")
-      .from_(g.V().has("Person","personId",review.personId))
-      .to(g.V().has("Review","reviewId",review.reviewId))
+      .from_(g.V().has("Person", "personId", review.personId))
+      .to(g.V().has("Review", "reviewId", review.reviewId))
       .next();
-      console.log(addsRev.value)
-          return convertObjectArrIntoParis(addsRev.value);
-        } catch (err) {
-          console.log(err);
-          return null;
-        }
-      };
-
+    console.log(addsRev.value);
+    return convertObjectArrIntoParis(addsRev.value);
+  } catch (err) {
+    console.log(err);
+    return null;
+  }
+};
 
 //Cusine
 
@@ -53,11 +72,11 @@ export const addCusine = async (addCus: Cusine) => {
       .property("name", addCus.name)
       .property("restaurantId", addCus.restaurantId)
       .addE("serve")
-      .from_(g.V().has("Restaurant","restaurantId",addCus.restaurantId))
-      .to(g.V().has("Cusine","cusineId",addCus.cusineId))
+      .from_(g.V().has("Restaurant", "restaurantId", addCus.restaurantId))
+      .to(g.V().has("Cusine", "cusineId", addCus.cusineId))
       .valueMap(true)
       .next();
-      console.log(addsCusine.value)
+    console.log(addsCusine.value);
     return convertObjectArrIntoParis(addsCusine.value);
   } catch (err) {
     console.log(err);
@@ -73,9 +92,12 @@ export const addRestaurant = async (addRes: Restaurant) => {
       .property("name", addRes.name)
       .property("restaurantId", addRes.restaurantId)
       .property("distance", addRes.address)
+      .addE("within")
+      .from_(g.V().has("Restaurant", "restaurantId", addRes.restaurantId))
+      .to(g.V().has("City", "name", addRes.city))
       .valueMap(true)
       .next();
-      console.log(addsRestaurant.value)
+    console.log(addsRestaurant.value);
     return convertObjectArrIntoParis(addsRestaurant.value);
   } catch (err) {
     console.log(err);
@@ -86,14 +108,13 @@ export const addRestaurant = async (addRes: Restaurant) => {
 //addFriends
 export const addFriends = async (personID: String, personTwoId: String) => {
   try {
-
     const followP = await g
       .addE("friends")
       .from_(g.V().has("Person", "personId", personID))
       .to(g.V().has("Person", "personId", personTwoId))
       .valueMap(true)
       .next();
-      console.log(followP.value)
+    console.log(followP.value);
     return convertObjectArrIntoParis(followP.value);
   } catch (err) {
     console.log(err);

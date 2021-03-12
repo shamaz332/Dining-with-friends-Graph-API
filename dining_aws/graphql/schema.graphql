@@ -2,13 +2,14 @@ type Person {
   personId: String
   first_name: String
   last_name: String
+  city:String
 }
 type Review {
   reviewId: String
-  rating:String
+  rating: String
   text: String
   restaurantId: String
-  created_date:String
+  created_date: String
 }
 type Cusine {
   cusineId: String
@@ -18,7 +19,7 @@ type Cusine {
 type Restaurant {
   name: String
   restaurantId: String
-  address:String
+  city: String
 }
 
 input inputPerson {
@@ -28,10 +29,10 @@ input inputPerson {
 }
 input inputReview {
   reviewId: String
-  rating:String
+  rating: String
   text: String
   restaurantId: String
-  created_date:String
+  created_date: String
   personId: String
 }
 input inputCusine {
@@ -42,44 +43,44 @@ input inputCusine {
 input inputRestaurant {
   name: String
   restaurantId: String
-  address:String
+  address: String
 }
 
-input cusineInRestaurant{
-cusineId: String
-restaurantId: String
+input cusineInRestaurant {
+  cusineId: String
+  restaurantId: String
 }
+type City{
+name: String
+}
+input city{
 
-input City {
 name: String
 }
 
 type Query {
+  friends(personID: String): Person
+  fiendsoffriends(personID: String): Person
+  userAssociated(personID: String, personIdTwo: String): Boolean
 
-  friends(personID: String): [Person]
-  fiendsoffriends(personID: String):[Person]
-  userAssociated(personID:String,personIdTwo:String):Boolean
-  highestRatedCusine(personID:String):[Restaurant]
-  topRestaurant:[Restaurant]
-  latestReview(restaurantId:String):[Review]
+  specificCusineHighestRate(personID: String):Cusine
 
 
-  }
-
-type Mutation{
-
-  addPerson (addPer:inputPerson):Person 
-  addReview (addRev:inputReview):Review 
-  addCusine (addCus:inputCusine):Cusine 
-  addRestaurant (addREst:inputRestaurant):Restaurant 
-  addFriends(personID: String,personTwoId: String):Person
-
-  
-  personInCity(pCity:City): String
-  restaurntInCity(rCity:City): String
-
+  highestRatedCusine(personID: String): [Restaurant]
+  topRestaurant: [Restaurant]
+  latestReview(restaurantId: String): [Review]
+  frindsRecommend(personID: String): [Restaurant]
 }
-schema{
-query: Query,
-mutation: Mutation
+
+type Mutation {
+  addPerson(addPer: inputPerson): Person
+  addReview(addRev: inputReview): Review
+  addCusine(addCus: inputCusine): Cusine
+  addRestaurant(addREst: inputRestaurant): Restaurant
+  addFriends(personID: String, personTwoId: String): Person
+  addCity(addC: String):City
+}
+schema {
+  query: Query
+  mutation: Mutation
 }

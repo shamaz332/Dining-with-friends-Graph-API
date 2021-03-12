@@ -1,7 +1,10 @@
+import { type } from "os"
+
 type Person = {
     personId: String;
     first_name: String;
     last_name: String;
+    city: String;
   }
   type Review ={
     reviewId: String;
@@ -20,10 +23,14 @@ type Person = {
     name: String;
     restaurantId: String;
     address:String;
+    city: String;
   }
   type CusineInRestaurant={
     cusineId: String;
     restaurantId: String;
     }
-  export { Person,Review,Cusine,Restaurant,CusineInRestaurant}
+    type City = {
+      name: String;
+    }
+  export { Person,Review,Cusine,Restaurant,CusineInRestaurant,City}
   
