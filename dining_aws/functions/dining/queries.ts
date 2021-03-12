@@ -1,7 +1,7 @@
 import { g } from "./main";
 import { convertObjectArrIntoParis } from "./diningMain";
 import { driver, process as gprocess, structure } from "gremlin";
-import { select } from "async";
+import { concatSeries, select } from "async";
 
 //working 1
 
@@ -62,6 +62,34 @@ export const UserXwithY = async (personID: String, personTwoId: String) => {
     return null;
   }
 };
+
+//4
+
+export const SpecificHighestRatedCusine = async (
+  personID: String,
+  cusineID: String
+) => {
+  try {
+    const a = await g
+      .V()
+      .has("Person", "personId", personID)
+      .out("lives")
+      .in_("within")
+      .where(gprocess.statics.out("serves").has("cusineId", cusineID))
+      .where(gprocess.statics.inE("isAbout"))
+      .group()
+      .by(gprocess.statics.identity())
+      .by(gprocess.statics.in_("isAbout").values("rating").mean())
+      .unfold()
+      .order()
+      .by(gprocess.statics.values, gprocess.order.desc)
+      .limit(1)
+      .unfold()
+      .valueMap(true)
+      .next();
+  } catch {}
+};
+
 //highest raed resturnt near me 5
 
 export const HighestRatedNearMe = async (personID: String) => {
@@ -140,7 +168,6 @@ export const MyFriendRecomd = async (personID: String) => {
   }
 };
 
-
 // export const MyFriendRecomdPastTenDays = async (personID: String) => {
 //   try {
 //     const day = new Date().getDate();
@@ -169,3 +196,19 @@ export const MyFriendRecomd = async (personID: String) => {
 //   }
 // };
 
+// g.V().
+//   has('Person','personId',personID).
+//   out('lives').
+//   in_('within').
+//   where(gprocess.statics.out('serves').has('cusineId',cusineID).
+//   where(gprocess.statics.inE('isAbout')).
+//   group().
+//   by(gprocess.statics.identity()).
+//   by(gprocess.statics.in_('isAbout').values('rating').mean()).
+//   unfold().
+//   order().
+//   by(gprocess.statics.values, gprocess.order.desc).
+//   limit(1)
+//   .unfold()
+//   .valueMap(true)
+//   .next()

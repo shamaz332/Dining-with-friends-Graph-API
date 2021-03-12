@@ -19,6 +19,7 @@ import {
   addCusine,
   addRestaurant,
   addFriends,
+  addCity,
   
 } from "./mutations";
 import {
@@ -90,7 +91,7 @@ export async function handler(event: AppSyncEvent, context: Context) {
         event.arguments.personTwoId
       );
       case "addCity":
-        return await addCIty(
+        return await addCity(
           event.arguments.addC,
 
         );

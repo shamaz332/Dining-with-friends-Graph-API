@@ -63,7 +63,7 @@ type Query {
   fiendsoffriends(personID: String): Person
   userAssociated(personID: String, personIdTwo: String): Boolean
 
-  specificCusineHighestRate(personID: String):Cusine
+  specificCusineHighestRate(personID: String,cusineID: String):Cusine
 
 
   highestRatedCusine(personID: String): [Restaurant]
