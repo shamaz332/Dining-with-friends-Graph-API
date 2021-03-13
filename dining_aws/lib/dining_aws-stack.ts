@@ -10,7 +10,7 @@ export class DiningAwsStack extends cdk.Stack {
     super(scope, id, props);
 
     const api = new appsync.GraphqlApi(this, "Api", {
-      name: "todo-app",
+      name: "diningByFriends",
       schema: appsync.Schema.fromAsset("graphql/schema.graphql"),
       authorizationConfig: {
         defaultAuthorization: {
