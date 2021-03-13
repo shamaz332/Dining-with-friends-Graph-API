@@ -22,7 +22,6 @@ type Person = {
   type Restaurant ={
     name: String;
     restaurantId: String;
-    address:String;
     city: String;
   }
   type CusineInRestaurant={

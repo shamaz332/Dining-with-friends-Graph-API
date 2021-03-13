@@ -16,8 +16,7 @@ export const addPerson = async (person: Person) => {
       .next();
 
     console.log(addsPerson.value);
-    return convertObjectArrIntoParis(addsPerson.value);
-  } catch (err) {
+    return addsPerson.value  } catch (err) {
     console.log(err);
     return null;
   }
@@ -25,14 +24,14 @@ export const addPerson = async (person: Person) => {
 
 export const addCity = async (city: City) => {
   try {
-    const addsPerson = await g
+    const addsC = await g
       .addV("City")
       .property("name", city.name)
       .valueMap(true)
       .next();
 
-    console.log(addsPerson.value);
-    return convertObjectArrIntoParis(addsPerson.value);
+    console.log(addsC.value);
+    return addsC.value
   } catch (err) {
     console.log(err);
     return null;
@@ -55,12 +54,13 @@ export const addReview = async (review: Review) => {
       .to(g.V().has("Review", "reviewId", review.reviewId))
       .next();
     console.log(addsRev.value);
-    return convertObjectArrIntoParis(addsRev.value);
+    return addsRev.value;
   } catch (err) {
     console.log(err);
     return null;
   }
 };
+
 
 //Cusine
 
@@ -77,7 +77,7 @@ export const addCusine = async (addCus: Cusine) => {
       .valueMap(true)
       .next();
     console.log(addsCusine.value);
-    return convertObjectArrIntoParis(addsCusine.value);
+    return addsCusine.value
   } catch (err) {
     console.log(err);
     return null;
@@ -91,20 +91,18 @@ export const addRestaurant = async (addRes: Restaurant) => {
       .addV("Restaurant")
       .property("name", addRes.name)
       .property("restaurantId", addRes.restaurantId)
-      .property("distance", addRes.address)
       .addE("within")
       .from_(g.V().has("Restaurant", "restaurantId", addRes.restaurantId))
       .to(g.V().has("City", "name", addRes.city))
       .valueMap(true)
       .next();
     console.log(addsRestaurant.value);
-    return convertObjectArrIntoParis(addsRestaurant.value);
+    return addsRestaurant.value
   } catch (err) {
     console.log(err);
     return null;
   }
 };
-
 //addFriends
 export const addFriends = async (personID: String, personTwoId: String) => {
   try {
@@ -115,7 +113,7 @@ export const addFriends = async (personID: String, personTwoId: String) => {
       .valueMap(true)
       .next();
     console.log(followP.value);
-    return convertObjectArrIntoParis(followP.value);
+    return followP.value
   } catch (err) {
     console.log(err);
     return null;

@@ -103,16 +103,29 @@ export class DiningAwsStack extends cdk.Stack {
     });
     lambdaDs.createResolver({
       typeName: "Query",
-      fieldName: "highestRatedCusine",
+      fieldName: "specificCusineHighestRate",
     });
     lambdaDs.createResolver({
       typeName: "Query",
-      fieldName: "topRestaurant",
+      fieldName: "highestRatedCusine",
     });
     lambdaDs.createResolver({
       typeName: "Query",
       fieldName: "latestReview",
     });
+    lambdaDs.createResolver({
+      typeName: "Query",
+      fieldName: "frindsRecommend",
+    });
+    lambdaDs.createResolver({
+      typeName: "Query",
+      fieldName: "pastXDays",
+    });
+
+
+
+//mutations
+
     lambdaDs.createResolver({
       typeName: "Mutation",
       fieldName: "addPerson",
@@ -134,7 +147,10 @@ export class DiningAwsStack extends cdk.Stack {
       fieldName: "addFriends",
     });
 
-
+    lambdaDs.createResolver({
+      typeName: "Mutation",
+      fieldName: "addCity",
+    });
 
     
 

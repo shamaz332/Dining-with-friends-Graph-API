@@ -27,6 +27,9 @@ import {
   UserXwithY,
   LatestReview,
   MyFriendRecomd,
+  SpecificHighestRatedCusine,
+  HighestRatedNearMe,
+  pastXDays
 } from "./queries";
 const Graph = structure.Graph;
 const DriverRemoteConnection = driver.DriverRemoteConnection;
@@ -106,14 +109,16 @@ export async function handler(event: AppSyncEvent, context: Context) {
         event.arguments.personTwoId
       );
     case "specificCusineHighestRate":
-      return await LatestReview(event.arguments.personID,event.arguments.cusineId);
+      return await SpecificHighestRatedCusine(event.arguments.personID,event.arguments.cusineId);
     case "highestRatedCusine":
-      return await MyFriendRecomd(event.arguments.personID);
-    case "topRestaurant":
-      return await MyFriendRecomd(event.arguments.personID);
+      return await HighestRatedNearMe(event.arguments.personID);
     case "latestReview":
-      return await MyFriendRecomd(event.arguments.restaurantId);
-
+      return await LatestReview(event.arguments.restaurantId);
+    case "frindsRecommend":
+      return await MyFriendRecomd(event.arguments.personID);
+      case "pastXDays":
+        return await pastXDays(event.arguments.personID);
+  
     default:
       return null;
   }

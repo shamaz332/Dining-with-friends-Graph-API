@@ -26,6 +26,7 @@ input inputPerson {
   personId: String
   first_name: String
   last_name: String
+  city: String
 }
 input inputReview {
   reviewId: String
@@ -43,7 +44,7 @@ input inputCusine {
 input inputRestaurant {
   name: String
   restaurantId: String
-  address: String
+  city: String
 }
 
 input cusineInRestaurant {
@@ -60,12 +61,16 @@ name: String
 type Query {
   friends(personID: String): Person
   fiendsoffriends(personID: String): Person
-  userAssociated(personID: String, personIdTwo: String): Boolean
+  userAssociated(personID: String, personIdTwo: String): String
+
+
   specificCusineHighestRate(personID: String,cusineID: String):Cusine
   highestRatedCusine(personID: String): [Restaurant]
-  latestReview(restaurantId: String): [Review]
-  topRestaurant: [Restaurant]
+  
+  latestReview(restaurantId: String): Review
+  
   frindsRecommend(personID: String): [Restaurant]
+  pastXDays(personID: String):Review
 }
 
 type Mutation {
@@ -74,7 +79,7 @@ type Mutation {
   addCusine(addCus: inputCusine): Cusine
   addRestaurant(addREst: inputRestaurant): Restaurant
   addFriends(personID: String, personTwoId: String): Person
-  addCity(addC: String):City
+  addCity(addC: city):City
 }
 schema {
   query: Query
