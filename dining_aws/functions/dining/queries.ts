@@ -16,7 +16,13 @@ export const myFriends = async (personID: String) => {
       .toList();
 
     console.log(myAllFriends);
-    return convertObjectArrIntoParis(myAllFriends);
+
+    const allFriends = myAllFriends.map((obj) => {
+      return convertObjectArrIntoParis(obj);
+    });
+
+
+    return allFriends
   } catch (err) {
     console.log(err);
     return null;
@@ -39,7 +45,12 @@ export const FriendsOfMyFriends = async (personID: String) => {
     // const abc = FrndOfFriends;
 
     console.log(FrndOfFriends);
-    return convertObjectArrIntoParis(FrndOfFriends);
+
+    const allFriendsofFrnd = FrndOfFriends.map((obj) => {
+      return convertObjectArrIntoParis(obj);
+    });
+
+    return allFriendsofFrnd;
   } catch (err) {
     console.log(err);
     return null;
@@ -49,15 +60,9 @@ export const FriendsOfMyFriends = async (personID: String) => {
 export const UserXwithY = async (personID: String, personTwoId: String) => {
   try {
     const UserAssociation = await g
-      .V()
-      .has("Person", "personId", personID)
-      .until(gprocess.statics.has("Person", "personId", personTwoId))
-      .repeat(gprocess.statics.both("friends").simplePath())
-      .path()
-      .valueMap(true)
-      .toList();
+    g.V().has('Friends','personId',personID).out('friends').has('Friends','personId',personID).hasNext()
 
-    return convertObjectArrIntoParis(UserAssociation.value);
+    return UserAssociation;
   } catch (err) {
     console.log(err);
     return null;
@@ -74,15 +79,14 @@ export const SpecificHighestRatedCusine = async (
     .V().has('Person','personId',personID).
     out().hasLabel("lives")
     .in_().hasLabel("within")
-    .where(gprocess.statics.out('serves').has('cusineId',
-    within(cuisine_list))).
-    where(inE('about')).
+    .where(gprocess.statics.out('serves').has('cusineId',cusineID)).
+    where(gprocess.statics.inE('about')).
     group().
-    by(identity()).
-    by(gprocess..__.in('isAbout').values('rating').mean()).
+    by(gprocess.statics.identity()).
+    by(gprocess.statics.in_('isAbout').values('rating').mean()).
     unfold().
     order().
-    by(values, desc).
+    by(gprocess.statics.values, gprocess.order.desc).
     limit(1)
       
       console.log(specificCusine)
@@ -101,7 +105,7 @@ export const HighestRatedNearMe = async (personID: String) => {
     const highestRatedNearMe = await g
       .V()
       .has("Person", "personId", personID)
-       .out().hasLabel("lives")
+      .out().hasLabel("lives")
       .in_().hasLabel("within")
       .where(gprocess.statics.inE("isAbout"))
       .group()
@@ -143,7 +147,12 @@ export const LatestReview = async (restaurantId: String) => {
       .with_(gprocess.withOptions.tokens)
       .toList();
 
-    return convertObjectArrIntoParis(latestR.value);
+
+      const latesReview = latestR.map((obj) => {
+        return convertObjectArrIntoParis(obj);
+      });
+  
+      return latesReview;
   } catch (err) {
     console.log(err);
     return null;
@@ -201,7 +210,7 @@ export const pastXDays = async (personID: String) => {
       .where(
         gprocess.statics
           .values("created_date")
-          .is(gprocess.P.gt(day - 864000000))
+          .is(gprocess.P.gt(gprocess.statics.math(day - 864000000)))
       )
       .valueMap(true)
       .toList();

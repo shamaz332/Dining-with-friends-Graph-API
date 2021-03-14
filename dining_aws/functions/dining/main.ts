@@ -27,8 +27,8 @@ import {
   UserXwithY,
   LatestReview,
   MyFriendRecomd,
-  SpecificHighestRatedCusine,
-  HighestRatedNearMe,
+  SpecificHighestRatedCusine 
+  ,HighestRatedNearMe,
   pastXDays
 } from "./queries";
 const Graph = structure.Graph;
@@ -98,9 +98,11 @@ export async function handler(event: AppSyncEvent, context: Context) {
     //====================
 
     case "friends":
+      console.log(myFriends(event.arguments.personID))
       return await myFriends(event.arguments.personID);
 
     case "fiendsoffriends":
+  
       return await FriendsOfMyFriends(event.arguments.personID);
 
     case "userAssociated":
