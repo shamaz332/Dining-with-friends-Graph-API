@@ -66,6 +66,25 @@ g.V().has('restaurant','restaurant_id',rid).
 
 
 
+{
+
+
+
+		export const type a
+		type b
+
+
+
+import {a,b} from "./type"
+
+
+todo:a
+
+
+
+
+}
+
 
 
 

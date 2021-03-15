@@ -15,8 +15,11 @@ export const addPerson = async (person: Person) => {
       .valueMap(true)
       .next();
 
-    console.log(addsPerson.value);
-    return addsPerson.value  } catch (err) {
+   
+    return "Person Added successfully"
+  
+  
+  } catch (err) {
     console.log(err);
     return null;
   }
@@ -31,7 +34,7 @@ export const addCity = async (city: City) => {
       .next();
 
     console.log(addsC.value);
-    return addsC.value
+    return "City Added successfully"
   } catch (err) {
     console.log(err);
     return null;
@@ -54,7 +57,7 @@ export const addReview = async (review: Review) => {
       .to(g.V().has("Review", "reviewId", review.reviewId))
       .next();
     console.log(addsRev.value);
-    return addsRev.value;
+    return `Review Added successfully`
   } catch (err) {
     console.log(err);
     return null;
@@ -71,13 +74,13 @@ export const addCusine = async (addCus: Cusine) => {
       .property("cusineId", addCus.cusineId)
       .property("name", addCus.name)
       .property("restaurantId", addCus.restaurantId)
-      .addE("serve")
+      .addE("serves")
       .from_(g.V().has("Restaurant", "restaurantId", addCus.restaurantId))
       .to(g.V().has("Cusine", "cusineId", addCus.cusineId))
       .valueMap(true)
       .next();
     console.log(addsCusine.value);
-    return addsCusine.value
+    return "Cusine Added successfully"
   } catch (err) {
     console.log(err);
     return null;
@@ -97,7 +100,7 @@ export const addRestaurant = async (addRes: Restaurant) => {
       .valueMap(true)
       .next();
     console.log(addsRestaurant.value);
-    return addsRestaurant.value
+    return  "Restaurant Added successfully"
   } catch (err) {
     console.log(err);
     return null;
@@ -113,7 +116,7 @@ export const addFriends = async (personID: String, personTwoId: String) => {
       .valueMap(true)
       .next();
     console.log(followP.value);
-    return followP.value
+    return "Friend Added successfully"
   } catch (err) {
     console.log(err);
     return null;

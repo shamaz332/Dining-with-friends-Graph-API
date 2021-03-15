@@ -25,7 +25,7 @@ export const myFriends = async (personID: String) => {
     return allFriends
   } catch (err) {
     console.log(err);
-    return null;
+    return err;
   }
 };
 
@@ -53,21 +53,26 @@ export const FriendsOfMyFriends = async (personID: String) => {
     return allFriendsofFrnd;
   } catch (err) {
     console.log(err);
-    return null;
+    return err;
   }
 };
 
 export const UserXwithY = async (personID: String, personTwoId: String) => {
   try {
     const UserAssociation = await g
-    g.V().has('Friends','personId',personID).out('friends').has('Friends','personId',personID).hasNext()
+    g.V()
+    .has('Friends','personId',personID)
+    .out('friends')
+    .has('Friends','personId',personTwoId)
+    .hasNext()
 
-    return UserAssociation;
+    return `${personID} is friend of ${personTwoId}`
   } catch (err) {
     console.log(err);
-    return null;
+    return err;
   }
 };
+
 //4
 
 export const SpecificHighestRatedCusine = async (
@@ -79,22 +84,24 @@ export const SpecificHighestRatedCusine = async (
     .V().has('Person','personId',personID).
     out().hasLabel("lives")
     .in_().hasLabel("within")
-    .where(gprocess.statics.out('serves').has('cusineId',cusineID)).
-    where(gprocess.statics.inE('about')).
-    group().
-    by(gprocess.statics.identity()).
-    by(gprocess.statics.in_('isAbout').values('rating').mean()).
-    unfold().
-    order().
-    by(gprocess.statics.values, gprocess.order.desc).
-    limit(1)
+    .where(gprocess.statics.out().hasLabel('serves').has('cusineId',cusineID)).
+     where(gprocess.statics.inE('isAbout')).
+     group().
+     by(gprocess.statics.identity()).
+     by(gprocess.statics.in_().hasLabel('isAbout').values('rating').mean()).
+     unfold().
+     order().
+     by(gprocess.statics.values, gprocess.order.desc).
+     limit(1)
+    .valueMap(true)
+    .toList();
       
-      console.log(specificCusine)
+  console.log(specificCusine)
 
     return convertObjectArrIntoParis(specificCusine);
   } catch (err) {
     console.log(err);
-    return null;
+    return err;
   }
 };
 
@@ -126,7 +133,7 @@ export const HighestRatedNearMe = async (personID: String) => {
     return higheshSPecificCusine;
   } catch (err) {
     console.log(err);
-    return null;
+    return err;
   }
 };
 //working 6
@@ -155,7 +162,7 @@ export const LatestReview = async (restaurantId: String) => {
       return latesReview;
   } catch (err) {
     console.log(err);
-    return null;
+    return err;
   }
 };
 
@@ -188,7 +195,7 @@ export const MyFriendRecomd = async (personID: String) => {
     return frndR;
   } catch (err) {
     console.log(err);
-    return null;
+    return err;
   }
 };
 
@@ -218,7 +225,7 @@ export const pastXDays = async (personID: String) => {
     return convertObjectArrIntoParis(frndRecomnd);
   } catch (err) {
     console.log(err);
-    return null;
+    return err;
   }
 };
 // export const MyFriendRecomdPastTenDays = async (personID: String) => {

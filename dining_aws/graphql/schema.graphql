@@ -60,29 +60,24 @@ name: String
 
 type Query {
   friends(personID: String): [Person]
-
   fiendsoffriends(personID: String): [Person]
   userAssociated(personID: String, personIdTwo: String): String
-
-
   specificCusineHighestRate(personID: String,cusineID: String):[Cusine]
   highestRatedCusine(personID: String): [Cusine]
-  
   latestReview(restaurantId: String): [Review]
-  
   frindsRecommend(personID: String): [Restaurant]
   pastXDays(personID: String):[Review]
 }
 
 type Mutation {
-  addPerson(addPer: inputPerson): [Person]
-  addReview(addRev: inputReview): [Review]
-  addCusine(addCus: inputCusine): [Cusine]
-  addRestaurant(addREst: inputRestaurant): Restaurant
+  addPerson(addPer: inputPerson): String
+  addReview(addRev: inputReview): String
+  addCusine(addCus: inputCusine): String
+  addRestaurant(addREst: inputRestaurant): String
 
-  addFriends(personID: String, personTwoId: String): Person
+  addFriends(personID: String, personTwoId: String): String
   
-  addCity(addC: city):City
+  addCity(addC: city):String
 }
 schema {
   query: Query
