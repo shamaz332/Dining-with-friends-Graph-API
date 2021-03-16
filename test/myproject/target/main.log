@@ -1,5 +1,5 @@
-13:01:33.303 karate.env system property was:  
-13:01:33.665 request:
+18:41:44.171 karate.env system property was:  
+18:41:44.851 request:
 1 > POST https://xt3hhbm2qrcghjywh4wwq7ph2m.appsync-api.us-east-1.amazonaws.com/graphql
 1 > Accept-Encoding: gzip,deflate
 1 > Connection: Keep-Alive
@@ -10,22 +10,11 @@
 1 > X-API-KEY: da2-3zbudgxsfbc6rbo4egomsyrege
 {"query":"{\nfiendsoffriends(personID: \"99\"){\ncity\n}\n}"}
 
-13:01:35.258 response time in milliseconds: 1591.58
-1 < 200
-1 < Connection: keep-alive
-1 < Content-Length: 42
-1 < Content-Type: application/json;charset=UTF-8
-1 < Date: Sun, 14 Mar 2021 08:01:35 GMT
-1 < Via: 1.1 2db3123c4cefd91554a1875a9a4be618.cloudfront.net (CloudFront)
-1 < X-Amz-Cf-Id: rXP2_tHQV6Fg8nEz6Ov5_qeYE3vryTYwWLLTz4fMXP_JcNx-ct9Npw==
-1 < X-Amz-Cf-Pop: FJR50-C1
-1 < X-Amzn-Trace-Id: Root=1-604dc2de-063c40a43cf8b4a21cbc1ba4
-1 < X-Cache: Miss from cloudfront
-1 < x-amzn-RequestId: 91c479a1-6a7a-431d-828c-db1f77465440
-{"data":{"fiendsoffriends":{"city":null}}}
-
-13:01:35.282 karate.env system property was:  
-13:01:35.287 request:
+18:41:45.281 java.net.UnknownHostException: xt3hhbm2qrcghjywh4wwq7ph2m.appsync-api.us-east-1.amazonaws.com: Name or service not known, http call failed after 429 milliseconds for URL: https://xt3hhbm2qrcghjywh4wwq7ph2m.appsync-api.us-east-1.amazonaws.com/graphql
+18:41:45.281 http request failed: 
+java.net.UnknownHostException: xt3hhbm2qrcghjywh4wwq7ph2m.appsync-api.us-east-1.amazonaws.com: Name or service not known
+18:41:45.351 karate.env system property was:  
+18:41:45.356 request:
 1 > POST https://xt3hhbm2qrcghjywh4wwq7ph2m.appsync-api.us-east-1.amazonaws.com/graphql
 1 > Accept-Encoding: gzip,deflate
 1 > Connection: Keep-Alive
@@ -36,22 +25,11 @@
 1 > X-API-KEY: da2-3zbudgxsfbc6rbo4egomsyrege
 {"query":"{\nfriends(personID: \"99\"){\ncity\n}\n}"}
 
-13:01:36.670 response time in milliseconds: 1381.51
-1 < 200
-1 < Connection: keep-alive
-1 < Content-Length: 34
-1 < Content-Type: application/json;charset=UTF-8
-1 < Date: Sun, 14 Mar 2021 08:01:36 GMT
-1 < Via: 1.1 6e7969153461a591840d744322ab8454.cloudfront.net (CloudFront)
-1 < X-Amz-Cf-Id: pW_MxzxgFu4gTvStRi-rlzR3SZxjajMZDnAdkxSiZiS8xMf7eQ0uKw==
-1 < X-Amz-Cf-Pop: FJR50-C1
-1 < X-Amzn-Trace-Id: Root=1-604dc2e0-3d7d68311724d39b4faef11f
-1 < X-Cache: Miss from cloudfront
-1 < x-amzn-RequestId: 9b166f33-a429-4b02-a54c-7db4ddee4147
-{"data":{"friends":{"city":null}}}
-
-13:01:36.686 karate.env system property was:  
-13:01:36.690 request:
+18:41:45.359 java.net.UnknownHostException: xt3hhbm2qrcghjywh4wwq7ph2m.appsync-api.us-east-1.amazonaws.com, http call failed after 2 milliseconds for URL: https://xt3hhbm2qrcghjywh4wwq7ph2m.appsync-api.us-east-1.amazonaws.com/graphql
+18:41:45.359 http request failed: 
+java.net.UnknownHostException: xt3hhbm2qrcghjywh4wwq7ph2m.appsync-api.us-east-1.amazonaws.com
+18:41:45.380 karate.env system property was:  
+18:41:45.393 request:
 1 > POST https://xt3hhbm2qrcghjywh4wwq7ph2m.appsync-api.us-east-1.amazonaws.com/graphql
 1 > Accept-Encoding: gzip,deflate
 1 > Connection: Keep-Alive
@@ -62,31 +40,25 @@
 1 > X-API-KEY: da2-3zbudgxsfbc6rbo4egomsyrege
 {"query":"{\nuserAssociated(personID: \"99\", personIdTwo: \"77\")\n}"}
 
-13:01:37.983 response time in milliseconds: 1291.02
-1 < 200
-1 < Connection: keep-alive
-1 < Content-Length: 220
-1 < Content-Type: application/json;charset=UTF-8
-1 < Date: Sun, 14 Mar 2021 08:01:37 GMT
-1 < Via: 1.1 ef10af6bed26700243bef9cca59e23a2.cloudfront.net (CloudFront)
-1 < X-Amz-Cf-Id: 4VNeJRqXUVWiruyOyGjtAMVLyUcm91_yh9TeQSUcNaBteM0t8bg5rQ==
-1 < X-Amz-Cf-Pop: FJR50-C1
-1 < X-Amzn-Trace-Id: Root=1-604dc2e1-7d7f8b133c7be55958e26374
-1 < X-Cache: Miss from cloudfront
-1 < x-amzn-RequestId: 5f147b9f-68e6-4df5-b531-271ce33d670c
-{"data":{"userAssociated":null},"errors":[{"path":["userAssociated"],"data":null,"errorType":"Error","errorInfo":null,"locations":[{"line":2,"column":1,"sourceName":null}],"message":"Unable to stringify response body"}]}
+18:41:45.394 java.net.UnknownHostException: xt3hhbm2qrcghjywh4wwq7ph2m.appsync-api.us-east-1.amazonaws.com, http call failed after 0 milliseconds for URL: https://xt3hhbm2qrcghjywh4wwq7ph2m.appsync-api.us-east-1.amazonaws.com/graphql
+18:41:45.394 http request failed: 
+java.net.UnknownHostException: xt3hhbm2qrcghjywh4wwq7ph2m.appsync-api.us-east-1.amazonaws.com
+18:41:45.424 karate.env system property was:  
+18:41:45.433 request:
+1 > POST https://xt3hhbm2qrcghjywh4wwq7ph2m.appsync-api.us-east-1.amazonaws.com/graphql
+1 > Accept-Encoding: gzip,deflate
+1 > Connection: Keep-Alive
+1 > Content-Length: 138
+1 > Content-Type: application/json; charset=UTF-8
+1 > Host: xt3hhbm2qrcghjywh4wwq7ph2m.appsync-api.us-east-1.amazonaws.com
+1 > User-Agent: Apache-HttpClient/4.5.12 (Java/1.8.0_282)
+1 > X-API-KEY: da2-3zbudgxsfbc6rbo4egomsyrege
+{"query":"{\n     latestReview(restaurantId: \"1234\") {\n    reviewId\n    rating\n    text\n    restaurantId\n    created_date\n  }\n}"}
 
-eger Mall",
-      "suite": "Apt. 692",
-      "city": "South Elvis",
-      "zipcode": "53919-4257",
-      "geo": {
-        "lat": "29.4572",
-        "lng": "-164.2990"
-      }
-    },
-    "phone": "493-170-9623 x156",
-    "website": "kale.biz",
+18:41:45.434 java.net.UnknownHostException: xt3hhbm2qrcghjywh4wwq7ph2m.appsync-api.us-east-1.amazonaws.com, http call failed after 1 milliseconds for URL: https://xt3hhbm2qrcghjywh4wwq7ph2m.appsync-api.us-east-1.amazonaws.com/graphql
+18:41:45.434 http request failed: 
+java.net.UnknownHostException: xt3hhbm2qrcghjywh4wwq7ph2m.appsync-api.us-east-1.amazonaws.com
+e": "kale.biz",
     "company": {
       "name": "Robel-Corkery",
       "catchPhrase": "Multi-tiered zero tolerance productivity",

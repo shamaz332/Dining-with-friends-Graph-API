@@ -52,7 +52,7 @@ Feature: sample karate test script
 
     # pretty print the response
 
-   Scenario: who are my friends
+   Scenario: user associated
     # note the use of text instead of def since this is NOT json
     Given text query =
 
@@ -60,6 +60,31 @@ Feature: sample karate test script
 
       {
       userAssociated(personID: "99", personIdTwo: "77")
+      }
+
+
+      """
+
+    And request { query: '#(query)' }
+    And header X-API-KEY = 'da2-3zbudgxsfbc6rbo4egomsyrege'
+    # And headers Accept = 'application/json'
+    When method post
+    Then status 200
+
+       Scenario: latestReview
+    # note the use of text instead of def since this is NOT json
+    Given text query =
+
+      """
+
+      {
+     latestReview(restaurantId: "1234") {
+    reviewId
+    rating
+    text
+    restaurantId
+    created_date
+  }
       }
 
 

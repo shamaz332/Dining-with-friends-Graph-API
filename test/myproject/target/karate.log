@@ -660,3 +660,63 @@
 1 < x-amzn-RequestId: 5f147b9f-68e6-4df5-b531-271ce33d670c
 {"data":{"userAssociated":null},"errors":[{"path":["userAssociated"],"data":null,"errorType":"Error","errorInfo":null,"locations":[{"line":2,"column":1,"sourceName":null}],"message":"Unable to stringify response body"}]}
 
+18:41:44.157 [main] INFO  com.intuit.karate - karate.env system property was:  
+18:41:44.851 [main] DEBUG com.intuit.karate - request:
+1 > POST https://xt3hhbm2qrcghjywh4wwq7ph2m.appsync-api.us-east-1.amazonaws.com/graphql
+1 > Accept-Encoding: gzip,deflate
+1 > Connection: Keep-Alive
+1 > Content-Length: 61
+1 > Content-Type: application/json; charset=UTF-8
+1 > Host: xt3hhbm2qrcghjywh4wwq7ph2m.appsync-api.us-east-1.amazonaws.com
+1 > User-Agent: Apache-HttpClient/4.5.12 (Java/1.8.0_282)
+1 > X-API-KEY: da2-3zbudgxsfbc6rbo4egomsyrege
+{"query":"{\nfiendsoffriends(personID: \"99\"){\ncity\n}\n}"}
+
+18:41:45.280 [main] ERROR com.intuit.karate - java.net.UnknownHostException: xt3hhbm2qrcghjywh4wwq7ph2m.appsync-api.us-east-1.amazonaws.com: Name or service not known, http call failed after 429 milliseconds for URL: https://xt3hhbm2qrcghjywh4wwq7ph2m.appsync-api.us-east-1.amazonaws.com/graphql
+18:41:45.281 [main] ERROR com.intuit.karate - http request failed: 
+java.net.UnknownHostException: xt3hhbm2qrcghjywh4wwq7ph2m.appsync-api.us-east-1.amazonaws.com: Name or service not known
+18:41:45.348 [main] INFO  com.intuit.karate - karate.env system property was:  
+18:41:45.356 [main] DEBUG com.intuit.karate - request:
+1 > POST https://xt3hhbm2qrcghjywh4wwq7ph2m.appsync-api.us-east-1.amazonaws.com/graphql
+1 > Accept-Encoding: gzip,deflate
+1 > Connection: Keep-Alive
+1 > Content-Length: 53
+1 > Content-Type: application/json; charset=UTF-8
+1 > Host: xt3hhbm2qrcghjywh4wwq7ph2m.appsync-api.us-east-1.amazonaws.com
+1 > User-Agent: Apache-HttpClient/4.5.12 (Java/1.8.0_282)
+1 > X-API-KEY: da2-3zbudgxsfbc6rbo4egomsyrege
+{"query":"{\nfriends(personID: \"99\"){\ncity\n}\n}"}
+
+18:41:45.358 [main] ERROR com.intuit.karate - java.net.UnknownHostException: xt3hhbm2qrcghjywh4wwq7ph2m.appsync-api.us-east-1.amazonaws.com, http call failed after 2 milliseconds for URL: https://xt3hhbm2qrcghjywh4wwq7ph2m.appsync-api.us-east-1.amazonaws.com/graphql
+18:41:45.359 [main] ERROR com.intuit.karate - http request failed: 
+java.net.UnknownHostException: xt3hhbm2qrcghjywh4wwq7ph2m.appsync-api.us-east-1.amazonaws.com
+18:41:45.379 [main] INFO  com.intuit.karate - karate.env system property was:  
+18:41:45.393 [main] DEBUG com.intuit.karate - request:
+1 > POST https://xt3hhbm2qrcghjywh4wwq7ph2m.appsync-api.us-east-1.amazonaws.com/graphql
+1 > Accept-Encoding: gzip,deflate
+1 > Connection: Keep-Alive
+1 > Content-Length: 71
+1 > Content-Type: application/json; charset=UTF-8
+1 > Host: xt3hhbm2qrcghjywh4wwq7ph2m.appsync-api.us-east-1.amazonaws.com
+1 > User-Agent: Apache-HttpClient/4.5.12 (Java/1.8.0_282)
+1 > X-API-KEY: da2-3zbudgxsfbc6rbo4egomsyrege
+{"query":"{\nuserAssociated(personID: \"99\", personIdTwo: \"77\")\n}"}
+
+18:41:45.394 [main] ERROR com.intuit.karate - java.net.UnknownHostException: xt3hhbm2qrcghjywh4wwq7ph2m.appsync-api.us-east-1.amazonaws.com, http call failed after 0 milliseconds for URL: https://xt3hhbm2qrcghjywh4wwq7ph2m.appsync-api.us-east-1.amazonaws.com/graphql
+18:41:45.394 [main] ERROR com.intuit.karate - http request failed: 
+java.net.UnknownHostException: xt3hhbm2qrcghjywh4wwq7ph2m.appsync-api.us-east-1.amazonaws.com
+18:41:45.424 [main] INFO  com.intuit.karate - karate.env system property was:  
+18:41:45.432 [main] DEBUG com.intuit.karate - request:
+1 > POST https://xt3hhbm2qrcghjywh4wwq7ph2m.appsync-api.us-east-1.amazonaws.com/graphql
+1 > Accept-Encoding: gzip,deflate
+1 > Connection: Keep-Alive
+1 > Content-Length: 138
+1 > Content-Type: application/json; charset=UTF-8
+1 > Host: xt3hhbm2qrcghjywh4wwq7ph2m.appsync-api.us-east-1.amazonaws.com
+1 > User-Agent: Apache-HttpClient/4.5.12 (Java/1.8.0_282)
+1 > X-API-KEY: da2-3zbudgxsfbc6rbo4egomsyrege
+{"query":"{\n     latestReview(restaurantId: \"1234\") {\n    reviewId\n    rating\n    text\n    restaurantId\n    created_date\n  }\n}"}
+
+18:41:45.434 [main] ERROR com.intuit.karate - java.net.UnknownHostException: xt3hhbm2qrcghjywh4wwq7ph2m.appsync-api.us-east-1.amazonaws.com, http call failed after 1 milliseconds for URL: https://xt3hhbm2qrcghjywh4wwq7ph2m.appsync-api.us-east-1.amazonaws.com/graphql
+18:41:45.434 [main] ERROR com.intuit.karate - http request failed: 
+java.net.UnknownHostException: xt3hhbm2qrcghjywh4wwq7ph2m.appsync-api.us-east-1.amazonaws.com
